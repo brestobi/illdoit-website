@@ -1,5 +1,6 @@
 {
   "rewrites": [
+    { "source": "/founder", "destination": "/index.html" },
     { "source": "/privacy", "destination": "/index.html" },
     { "source": "/tncs", "destination": "/index.html" },
     { "source": "/cooky", "destination": "/index.html" },
