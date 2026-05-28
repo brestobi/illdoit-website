@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Mail, MapPin, Globe, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
 
 const Footer = () => {
@@ -30,11 +31,17 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-3">
-              {["Home", "Services", "How It Works", "Providers", "FAQ"].map((link) => (
-                <li key={link}>
-                  <a href={`#${link.toLowerCase().replace(/ /g, "-")}`} className="text-sm hover:text-white transition-colors">
-                    {link}
-                  </a>
+              {[
+                { name: "Home", path: "/" },
+                { name: "Services", path: "/#services" },
+                { name: "How It Works", path: "/#how-it-works" },
+                { name: "Providers", path: "/#providers" },
+                { name: "FAQ", path: "/#faq" },
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link to={link.path} className="text-sm hover:text-white transition-colors">
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -43,9 +50,17 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-semibold mb-4">Legal</h4>
             <ul className="space-y-3">
-              {["Privacy Policy", "Terms of Service", "Cookie Policy", "Payment Terms"].map((link) => (
-                <li key={link}>
-                  <a href="#" className="text-sm hover:text-white transition-colors">{link}</a>
+              {[
+                { name: "Privacy Policy", path: "/privacy" },
+                { name: "Terms of Service", path: "/tncs" },
+                { name: "Cookie Policy", path: "/cooky" },
+                { name: "Legal Information", path: "/legal" },
+                { name: "Payment Terms", path: "/paymentterms" },
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link to={link.path} className="text-sm hover:text-white transition-colors">
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>

@@ -1,5 +1,10 @@
 {
   "rewrites": [
+    { "source": "/privacy", "destination": "/index.html" },
+    { "source": "/tncs", "destination": "/index.html" },
+    { "source": "/cooky", "destination": "/index.html" },
+    { "source": "/legal", "destination": "/index.html" },
+    { "source": "/paymentterms", "destination": "/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

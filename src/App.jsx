@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
 import HowItWorks from './components/HowItWorks.jsx'
@@ -10,10 +11,16 @@ import PayFastSection from './components/PayFastSection.jsx'
 import FAQ from './components/FAQ.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
+import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
+import TermsOfService from './pages/TermsOfService.jsx'
+import CookiePolicy from './pages/CookiePolicy.jsx'
+import LegalInfo from './pages/LegalInfo.jsx'
+import PaymentTerms from './pages/PaymentTerms.jsx'
+import NotFound from './pages/NotFound.jsx'
 
-function App() {
+function HomePage() {
   return (
-    <div className="min-h-screen bg-white font-sans text-slate-900 antialiased">
+    <>
       <Navbar />
       <Hero />
       <HowItWorks />
@@ -25,7 +32,23 @@ function App() {
       <FAQ />
       <Contact />
       <Footer />
-    </div>
+    </>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/tncs" element={<TermsOfService />} />
+        <Route path="/cooky" element={<CookiePolicy />} />
+        <Route path="/legal" element={<LegalInfo />} />
+        <Route path="/paymentterms" element={<PaymentTerms />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
