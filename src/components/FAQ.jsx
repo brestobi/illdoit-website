@@ -54,38 +54,38 @@ const FAQ = () => {
   ]
 
   return (
-    <section id="faq" className="py-24 bg-slate-50">
+    <section id="faq" className="py-16 sm:py-24 bg-slate-50">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FadeIn className="text-center mb-16">
+        <FadeIn className="text-center mb-12 sm:mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 text-sm font-semibold mb-4">
             Got Questions?
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
             Frequently Asked Questions
           </h2>
-          <p className="text-lg text-slate-600">
+          <p className="text-base sm:text-lg text-slate-600 px-2">
             Everything you need to know about IllDoIt.
           </p>
         </FadeIn>
 
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {faqs.map((faq, index) => (
             <FadeIn key={index} delay={index * 0.05}>
-              <motion.div className="bg-white rounded-2xl border border-slate-100 overflow-hidden hover:shadow-md transition-shadow">
+              <motion.div className="bg-white rounded-xl sm:rounded-2xl border border-slate-100 overflow-hidden hover:shadow-md transition-shadow">
                 <button
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                  className="w-full flex items-center justify-between p-6 text-left"
+                  className="w-full flex items-center justify-between p-4 sm:p-6 text-left"
                 >
-                  <span className="font-semibold text-slate-900 pr-4">{faq.question}</span>
+                  <span className="font-semibold text-slate-900 pr-4 text-sm sm:text-base">{faq.question}</span>
                   <motion.div
                     animate={{ rotate: openIndex === index ? 180 : 0 }}
                     transition={{ duration: 0.2 }}
                     className="flex-shrink-0"
                   >
                     {openIndex === index ? (
-                      <ChevronUp size={20} className="text-blue-600" />
+                      <ChevronUp size={18} className="text-blue-600 sm:size-5" />
                     ) : (
-                      <ChevronDown size={20} className="text-slate-400" />
+                      <ChevronDown size={18} className="text-slate-400 sm:size-5" />
                     )}
                   </motion.div>
                 </button>
@@ -97,7 +97,7 @@ const FAQ = () => {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <div className="px-6 pb-6 text-slate-600 leading-relaxed">
+                      <div className="px-4 sm:px-6 pb-4 sm:pb-6 text-sm sm:text-base text-slate-600 leading-relaxed">
                         {faq.answer}
                       </div>
                     </motion.div>

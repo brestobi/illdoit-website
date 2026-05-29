@@ -17,6 +17,7 @@ import CookiePolicy from './pages/CookiePolicy.jsx'
 import LegalInfo from './pages/LegalInfo.jsx'
 import PaymentTerms from './pages/PaymentTerms.jsx'
 import FounderPage from './pages/FounderPage.jsx'
+import AppDownload from './pages/AppDownload.jsx'
 import NotFound from './pages/NotFound.jsx'
 
 function HomePage() {
@@ -42,6 +43,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/app" element={<AppDownload />} />
         <Route path="/founder" element={<FounderPage />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/tncs" element={<TermsOfService />} />
