@@ -1,6 +1,13 @@
 import React from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Sparkles, Shield, CheckCircle, Zap, ArrowRight, Search, Clock, MapPin, Star, Wrench, Truck, Flower2, Download } from 'lucide-react'
+import { Sparkles, Shield, CheckCircle, Zap, ArrowRight, Search, Clock, MapPin, Star, Wrench, Truck, Flower2, Download, Apple } from 'lucide-react'
+
+// Google Play SVG Icon
+const GooglePlayIcon = ({ size = 18 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/>
+  </svg>
+)
 
 const Hero = () => {
   const { scrollY } = useScroll()
@@ -30,7 +37,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-4 sm:mb-6"
+              className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-4 sm:mb-6"
             >
               Need Something{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Done?</span>
@@ -51,7 +58,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-8 sm:mb-12"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-6 sm:mb-8"
             >
               <a href="#contact" className="px-6 sm:px-8 py-3.5 sm:py-4 bg-blue-600 text-white rounded-full font-semibold text-base sm:text-lg hover:bg-blue-700 transition-all hover:scale-105 shadow-xl shadow-blue-600/25 flex items-center justify-center gap-2">
                 Get Started <ArrowRight size={18} />
@@ -61,19 +68,51 @@ const Hero = () => {
               </a>
             </motion.div>
 
-            {/* Gold Download App Button */}
+            {/* App Download Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex justify-center lg:justify-start mb-8 sm:mb-12"
+              className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center lg:justify-start mb-8 sm:mb-12"
             >
+              {/* Google Play */}
+              <a 
+                href="https://play.google.com/store/apps/details?id=space.illdoit.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 bg-white text-slate-900 rounded-xl font-semibold text-sm hover:bg-slate-100 transition-all hover:scale-105 shadow-lg"
+              >
+                <GooglePlayIcon size={18} />
+                <div className="text-left leading-none">
+                  <div className="text-[9px] text-slate-500 uppercase tracking-wide">Get it on</div>
+                  <div className="text-sm font-bold">Google Play</div>
+                </div>
+              </a>
+
+              {/* iOS App Store */}
+              <a 
+                href="https://apps.apple.com/app/illdoit/id123456789"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 bg-white text-slate-900 rounded-xl font-semibold text-sm hover:bg-slate-100 transition-all hover:scale-105 shadow-lg"
+              >
+                <Apple size={18} />
+                <div className="text-left leading-none">
+                  <div className="text-[9px] text-slate-500 uppercase tracking-wide">Download on</div>
+                  <div className="text-sm font-bold">App Store</div>
+                </div>
+              </a>
+
+              {/* Direct APK - Gold */}
               <a 
                 href="/app" 
-                className="group inline-flex items-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-yellow-400 via-yellow-500 to-amber-500 text-slate-900 rounded-full font-bold text-base sm:text-lg hover:from-yellow-300 hover:via-yellow-400 hover:to-amber-400 transition-all hover:scale-105 shadow-xl shadow-yellow-500/30 border border-yellow-300"
+                className="group inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 bg-gradient-to-r from-yellow-400 via-yellow-500 to-amber-500 text-slate-900 rounded-xl font-bold text-sm hover:from-yellow-300 hover:via-yellow-400 hover:to-amber-400 transition-all hover:scale-105 shadow-lg shadow-yellow-500/30 border border-yellow-300"
               >
-                <Download size={20} className="group-hover:animate-bounce" />
-                Download the IllDoIt App
+                <Download size={16} className="group-hover:animate-bounce" />
+                <div className="text-left leading-none">
+                  <div className="text-[9px] text-amber-800 uppercase tracking-wide">Direct</div>
+                  <div className="text-sm font-bold">Download APK</div>
+                </div>
               </a>
             </motion.div>
 

@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Download } from 'lucide-react'
+import { Menu, X, Download, Apple } from 'lucide-react'
+
+// Google Play SVG Icon
+const GooglePlayIcon = ({ size = 16 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/>
+  </svg>
+)
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -64,10 +71,10 @@ const Navbar = () => {
           </div>
 
           {/* CTA Buttons - Desktop */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-2 sm:gap-3">
             <a
               href="/app"
-              className={`px-4 py-2 rounded-full text-sm font-semibold transition-all hover:scale-105 flex items-center gap-1.5 ${
+              className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all hover:scale-105 flex items-center gap-1.5 ${
                 isScrolled
                   ? "bg-gradient-to-r from-yellow-400 to-amber-500 text-slate-900 hover:from-yellow-300 hover:to-amber-400 shadow-md"
                   : "bg-white/20 text-white border border-white/30 hover:bg-white/30"
@@ -78,7 +85,7 @@ const Navbar = () => {
             </a>
             <a
               href="#contact"
-              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all hover:scale-105 ${
+              className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all hover:scale-105 ${
                 isScrolled
                   ? "bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-600/20"
                   : "bg-white text-blue-600 hover:bg-white/90"
@@ -118,19 +125,43 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              <div className="pt-3 space-y-2">
+
+              {/* Mobile App Download Buttons */}
+              <div className="pt-3 space-y-2 border-t border-slate-100 mt-2">
+                <p className="text-xs text-slate-500 px-3 pt-1">Download App</p>
+
+                <a
+                  href="https://play.google.com/store/apps/details?id=space.illdoit.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex items-center justify-center gap-2 w-full py-2.5 bg-slate-900 text-white rounded-xl font-semibold text-sm"
+                >
+                  <GooglePlayIcon size={16} /> Google Play
+                </a>
+
+                <a
+                  href="https://apps.apple.com/app/illdoit/id123456789"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex items-center justify-center gap-2 w-full py-2.5 bg-slate-900 text-white rounded-xl font-semibold text-sm"
+                >
+                  <Apple size={16} /> App Store
+                </a>
+
                 <a
                   href="/app"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex items-center justify-center gap-2 w-full py-3 bg-gradient-to-r from-yellow-400 to-amber-500 text-slate-900 rounded-full font-semibold"
+                  className="flex items-center justify-center gap-2 w-full py-2.5 bg-gradient-to-r from-yellow-400 to-amber-500 text-slate-900 rounded-xl font-bold text-sm"
                 >
-                  <Download size={16} />
-                  Download App
+                  <Download size={16} /> Download APK
                 </a>
+
                 <a
                   href="#contact"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full text-center bg-blue-600 text-white py-3 rounded-full font-semibold"
+                  className="block w-full text-center bg-blue-600 text-white py-3 rounded-full font-semibold mt-2"
                 >
                   Get Started
                 </a>

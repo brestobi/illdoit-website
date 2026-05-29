@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowLeft, Download, Smartphone, QrCode, CheckCircle, Shield, Zap, ChevronRight } from 'lucide-react'
+import { ArrowLeft, Download, Smartphone, QrCode, CheckCircle, Shield, Zap, ChevronRight, Apple } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 const FadeIn = ({ children, delay = 0, className = "" }) => {
@@ -29,9 +29,22 @@ const Step = ({ number, title, description }) => (
   </div>
 )
 
+// Google Play SVG Icon
+const GooglePlayIcon = ({ size = 20 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/>
+  </svg>
+)
+
+// iOS App Store SVG Icon
+const AppStoreIcon = ({ size = 20 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.37.26 3.49 1.91-.09.06-2.08 1.21-2.06 3.6.02 2.86 2.51 3.82 2.54 3.84-.02.07-.4 1.36-1.17 2.7zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+  </svg>
+)
+
 const AppDownload = () => {
-  const handleDownload = () => {
-    // Create a dummy APK file download
+  const handleDownloadAPK = () => {
     const link = document.createElement('a')
     link.href = '/illdoit-app.apk'
     link.download = 'illdoit-app.apk'
@@ -84,14 +97,48 @@ const AppDownload = () => {
                     Get services done faster. Book trusted providers, track progress, and pay securely — all from your phone.
                   </p>
 
-                  {/* Download Button */}
-                  <button 
-                    onClick={handleDownload}
-                    className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-400 via-yellow-500 to-amber-500 text-slate-900 rounded-full font-bold text-lg hover:from-yellow-300 hover:via-yellow-400 hover:to-amber-400 transition-all hover:scale-105 shadow-xl shadow-yellow-500/30 border border-yellow-300 mb-8"
-                  >
-                    <Download size={22} className="group-hover:animate-bounce" />
-                    Download App (APK)
-                  </button>
+                  {/* Download Buttons - Stacked on mobile, row on desktop */}
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-8">
+                    {/* Google Play */}
+                    <a 
+                      href="https://play.google.com/store/apps/details?id=space.illdoit.app"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-white text-slate-900 rounded-xl font-semibold hover:bg-slate-100 transition-all hover:scale-105 shadow-xl"
+                    >
+                      <GooglePlayIcon size={22} />
+                      <div className="text-left">
+                        <div className="text-[10px] leading-none text-slate-500 uppercase tracking-wide">Get it on</div>
+                        <div className="text-sm font-bold leading-tight">Google Play</div>
+                      </div>
+                    </a>
+
+                    {/* iOS App Store */}
+                    <a 
+                      href="https://apps.apple.com/app/illdoit/id123456789"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-white text-slate-900 rounded-xl font-semibold hover:bg-slate-100 transition-all hover:scale-105 shadow-xl"
+                    >
+                      <Apple size={22} />
+                      <div className="text-left">
+                        <div className="text-[10px] leading-none text-slate-500 uppercase tracking-wide">Download on the</div>
+                        <div className="text-sm font-bold leading-tight">App Store</div>
+                      </div>
+                    </a>
+
+                    {/* Direct APK */}
+                    <button 
+                      onClick={handleDownloadAPK}
+                      className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-gradient-to-r from-yellow-400 via-yellow-500 to-amber-500 text-slate-900 rounded-xl font-bold hover:from-yellow-300 hover:via-yellow-400 hover:to-amber-400 transition-all hover:scale-105 shadow-xl shadow-yellow-500/30 border border-yellow-300"
+                    >
+                      <Download size={18} />
+                      <div className="text-left">
+                        <div className="text-[10px] leading-none text-amber-800 uppercase tracking-wide">Direct</div>
+                        <div className="text-sm font-bold leading-tight">Download APK</div>
+                      </div>
+                    </button>
+                  </div>
 
                   <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 text-sm text-slate-400">
                     <span className="flex items-center gap-1.5"><Shield size={14} className="text-emerald-400" /> Secure</span>
@@ -104,12 +151,10 @@ const AppDownload = () => {
               {/* Right - Phone with QR + Worker */}
               <FadeIn delay={0.2}>
                 <div className="relative flex justify-center">
-                  {/* Phone Mockup */}
                   <div className="relative w-[260px] sm:w-[300px]">
                     <div className="relative bg-slate-800 rounded-[2.5rem] sm:rounded-[3rem] p-2.5 sm:p-3 shadow-2xl shadow-black/50 border border-slate-700">
                       <div className="bg-white rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden">
                         <div className="bg-slate-50 min-h-[480px] sm:min-h-[540px] p-4">
-                          {/* Status Bar */}
                           <div className="flex justify-between items-center px-2 py-1 text-xs text-slate-500 mb-4">
                             <span>9:41</span>
                             <div className="flex gap-1">
@@ -118,7 +163,6 @@ const AppDownload = () => {
                             </div>
                           </div>
 
-                          {/* App Content */}
                           <div className="text-center mb-6">
                             <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg">
                               <span className="text-2xl font-bold text-white">I</span>
@@ -127,7 +171,6 @@ const AppDownload = () => {
                             <p className="text-xs text-slate-500">v2.1.0</p>
                           </div>
 
-                          {/* QR Code Placeholder */}
                           <div className="bg-white rounded-xl p-4 shadow-sm border border-slate-100 mb-4">
                             <p className="text-xs text-slate-500 text-center mb-3">Scan to Download</p>
                             <div className="w-32 h-32 mx-auto bg-slate-100 rounded-xl flex items-center justify-center border-2 border-dashed border-slate-300">
@@ -135,15 +178,19 @@ const AppDownload = () => {
                             </div>
                           </div>
 
-                          {/* Install Button */}
-                          <button className="w-full py-3 bg-blue-600 text-white rounded-xl font-semibold text-sm hover:bg-blue-700 transition-colors">
-                            Install App
-                          </button>
+                          <div className="space-y-2">
+                            <button className="w-full py-2.5 bg-slate-900 text-white rounded-xl font-semibold text-sm flex items-center justify-center gap-2">
+                              <GooglePlayIcon size={16} /> Google Play
+                            </button>
+                            <button className="w-full py-2.5 bg-slate-900 text-white rounded-xl font-semibold text-sm flex items-center justify-center gap-2">
+                              <Apple size={16} /> App Store
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
 
-                    {/* 3D Construction Worker - Sitting on top of phone */}
+                    {/* 3D Construction Worker */}
                     <motion.div
                       initial={{ y: -20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
@@ -158,11 +205,10 @@ const AppDownload = () => {
                       />
                     </motion.div>
 
-                    {/* Floating Badge */}
                     <motion.div
                       animate={{ y: [0, -8, 0] }}
                       transition={{ duration: 3, repeat: Infinity }}
-                      className="absolute -right-2 sm:-right-4 top-20 bg-white rounded-xl p-2.5 sm:p-3 shadow-xl border border-slate-100"
+                      className="absolute -right-2 sm:-right-4 top-20 bg-white rounded-xl sm:rounded-2xl p-2.5 sm:p-3 shadow-xl border border-slate-100"
                     >
                       <div className="flex items-center gap-2">
                         <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
@@ -192,7 +238,7 @@ const AppDownload = () => {
                 Installation Guide
               </h2>
               <p className="text-slate-600 max-w-xl mx-auto">
-                Follow these simple steps to get the IllDoIt app running on your Android device.
+                Follow these simple steps to get the IllDoIt app running on your device.
               </p>
             </FadeIn>
 
@@ -201,23 +247,23 @@ const AppDownload = () => {
                 <div className="space-y-6 sm:space-y-8">
                   <Step 
                     number="1" 
-                    title="Download the APK" 
-                    description="Click the download button above to save the IllDoIt APK file to your device."
+                    title="Download the App" 
+                    description="Get IllDoIt from Google Play, the App Store, or download the APK directly for Android."
                   />
                   <Step 
                     number="2" 
-                    title="Allow Unknown Sources" 
-                    description="Go to Settings > Security > Unknown Sources and enable installation from unknown sources."
+                    title="Install & Open" 
+                    description="Follow your device's installation process. For APK, enable 'Unknown Sources' in Settings."
                   />
                   <Step 
                     number="3" 
-                    title="Install the App" 
-                    description="Open your Downloads folder, tap the illdoit-app.apk file, and follow the installation prompts."
+                    title="Create Your Account" 
+                    description="Sign up with your email or phone number. Verify your identity to get started."
                   />
                   <Step 
                     number="4" 
-                    title="Open & Sign Up" 
-                    description="Launch the IllDoIt app, create your account, and start booking services right away."
+                    title="Start Booking" 
+                    description="Browse services, post tasks, or sign up as a provider. You're all set!"
                   />
                 </div>
               </FadeIn>
@@ -228,24 +274,43 @@ const AppDownload = () => {
                     <Smartphone size={20} className="text-blue-600" />
                     System Requirements
                   </h3>
-                  <ul className="space-y-3">
-                    {[
-                      "Android 7.0 (Nougat) or higher",
-                      "Minimum 2GB RAM",
-                      "100MB free storage space",
-                      "Active internet connection",
-                      "GPS location services enabled",
-                    ].map((req, i) => (
-                      <li key={i} className="flex items-center gap-3 text-sm text-slate-600">
-                        <ChevronRight size={16} className="text-blue-500 flex-shrink-0" />
-                        {req}
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="space-y-4">
+                    <div>
+                      <p className="font-semibold text-slate-900 text-sm mb-1">Android</p>
+                      <ul className="space-y-1.5">
+                        {[
+                          "Android 7.0 (Nougat) or higher",
+                          "Minimum 2GB RAM",
+                          "100MB free storage space",
+                        ].map((req, i) => (
+                          <li key={i} className="flex items-center gap-2 text-sm text-slate-600">
+                            <ChevronRight size={14} className="text-blue-500 flex-shrink-0" />
+                            {req}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="h-px bg-slate-200" />
+                    <div>
+                      <p className="font-semibold text-slate-900 text-sm mb-1">iOS</p>
+                      <ul className="space-y-1.5">
+                        {[
+                          "iOS 13.0 or later",
+                          "iPhone, iPad, or iPod touch",
+                          "Compatible with all modern Apple devices",
+                        ].map((req, i) => (
+                          <li key={i} className="flex items-center gap-2 text-sm text-slate-600">
+                            <ChevronRight size={14} className="text-blue-500 flex-shrink-0" />
+                            {req}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
 
                   <div className="mt-6 p-4 bg-amber-50 rounded-xl border border-amber-100">
                     <p className="text-sm text-amber-800">
-                      <strong>Note:</strong> The IllDoIt app is currently available for Android devices only. iOS version coming soon.
+                      <strong>Note:</strong> Direct APK download is available for Android users who prefer manual installation. iOS users must use the App Store.
                     </p>
                   </div>
                 </div>
