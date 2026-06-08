@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://illdoit.space/sitemap.xml
+
+# Crawl rate
+Crawl-delay: 1
+
+# Disallow admin/private paths (when added)
+# Disallow: /admin/
+# Disallow: /api/
+
+# Allow Google to fully render
+User-agent: Googlebot
+Allow: /
+
+# Allow images
+User-agent: Googlebot-Image
+Allow: /
+
+# Allow mobile
+User-agent: Googlebot-Mobile
+Allow: /

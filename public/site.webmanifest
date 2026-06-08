@@ -1,0 +1,55 @@
+{
+  "name": "IllDoIt - On-Demand Services South Africa",
+  "short_name": "IllDoIt",
+  "description": "Book trusted local service providers for cleaning, handyman, delivery, gardening, moving & more. Secure PayFast payments.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait",
+  "scope": "/",
+  "lang": "en-ZA",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "lifestyle", "productivity"],
+  "screenshots": [
+    {
+      "src": "/screenshot-1.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "IllDoIt Home Screen"
+    },
+    {
+      "src": "/screenshot-2.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Book a Service on IllDoIt"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=space.illdoit.app",
+      "id": "space.illdoit.app"
+    },
+    {
+      "platform": "itunes",
+      "url": "https://apps.apple.com/app/illdoit/id123456789"
+    }
+  ],
+  "prefer_related_applications": true
+}
